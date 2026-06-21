@@ -1,0 +1,23 @@
+<section id="hours" class="py-20 px-4 bg-cream">
+    <div class="max-w-2xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-charcoal-500 mb-4">Business Hours</h2>
+        <div class="w-16 h-1 bg-terracotta-500 mx-auto mb-12 rounded-full"></div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-charcoal-100 divide-y divide-charcoal-100 overflow-hidden">
+            {% for slot in hours %}
+                <div class="flex items-center justify-between px-6 py-4 {% if forloop.counter0 == today %}bg-terracotta-50{% endif %}">
+                    <span class="font-medium text-charcoal-500">{{ slot.get_day_display }}</span>
+                    {% if slot.is_closed %}
+                        <span class="text-charcoal-300">Closed</span>
+                    {% else %}
+                        <span class="text-charcoal-400">
+                            {{ slot.open_time|time:"g:i A" }} – {{ slot.close_time|time:"g:i A" }}
+                        </span>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p class="text-center text-charcoal-400 py-8">Hours not yet set.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>

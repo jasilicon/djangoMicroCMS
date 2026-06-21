@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ business.name }}{% endblock %}</title>
+    <meta name="description" content="{{ business.tagline }}">
+    {% if business.favicon %}<link rel="icon" type="image/x-icon" href="{{ business.favicon.url }}">{% endif %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracotta: {
+                            50: '#faf0ec',
+                            100: '#f5e1d9',
+                            200: '#ebc3b3',
+                            300: '#e1a58d',
+                            400: '#d78767',
+                            500: '#c67b5c',
+                            600: '#a8624a',
+                            700: '#8a4f3b',
+                            800: '#6c3d2c',
+                            900: '#4e2c1d',
+                        },
+                        cream: '#FFF8F0',
+                        charcoal: {
+                            50: '#f5f5f5',
+                            100: '#e0e0e0',
+                            200: '#b3b3b3',
+                            300: '#808080',
+                            400: '#4d4d4d',
+                            500: '#2d2d2d',
+                            600: '#262626',
+                            700: '#1f1f1f',
+                            800: '#181818',
+                            900: '#111111',
+                        },
+                        sage: {
+                            50: '#f3f7f1',
+                            100: '#e7efe5',
+                            200: '#cfdfcb',
+                            300: '#b7cfb1',
+                            400: '#9fbf97',
+                            500: '#7d9b76',
+                            600: '#647c5e',
+                            700: '#4b5d46',
+                            800: '#323e2e',
+                            900: '#191f16',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-cream text-charcoal-500 font-sans antialiased">
+    {% block content %}{% endblock %}
+</body>
+</html>

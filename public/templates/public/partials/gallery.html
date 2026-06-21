@@ -1,0 +1,24 @@
+<section id="gallery" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-charcoal-500 mb-4">Gallery</h2>
+        <div class="w-16 h-1 bg-terracotta-500 mx-auto mb-12 rounded-full"></div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {% for image in gallery %}
+                <a href="{{ image.image.url }}" target="_blank"
+                   class="group relative block aspect-square overflow-hidden rounded-xl bg-charcoal-100">
+                    <img src="{{ image.image.url }}"
+                         alt="{{ image.caption }}"
+                         class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    {% if image.caption %}
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-end p-4">
+                            <p class="text-white text-sm opacity-0 group-hover:opacity-100 transition translate-y-2 group-hover:translate-y-0">{{ image.caption }}</p>
+                        </div>
+                    {% endif %}
+                </a>
+            {% empty %}
+                <p class="col-span-full text-center text-charcoal-400">Gallery coming soon.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>

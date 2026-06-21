@@ -1,0 +1,42 @@
+<section id="services" class="py-20 px-4 bg-cream">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-charcoal-500 mb-4">Our Services</h2>
+        <div class="w-16 h-1 bg-terracotta-500 mx-auto mb-12 rounded-full"></div>
+
+        {% for category in service_categories %}
+            <div class="mb-12 last:mb-0">
+                <h3 class="text-2xl font-semibold text-charcoal-500 mb-2">{{ category.name }}</h3>
+                {% if category.description %}
+                    <p class="text-charcoal-400 mb-6">{{ category.description }}</p>
+                {% endif %}
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {% for service in category.services.all %}
+                        {% if service.is_published %}
+                            <div class="bg-white rounded-xl shadow-sm border border-charcoal-100 overflow-hidden hover:shadow-md transition">
+                                {% if service.image %}
+                                    <img src="{{ service.image.url }}" alt="{{ service.name }}" class="w-full h-48 object-cover">
+                                {% endif %}
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between gap-4">
+                                        <h4 class="text-lg font-semibold text-charcoal-500">{{ service.name }}</h4>
+                                        {% if service.price is not None %}
+                                            <span class="text-terracotta-500 font-bold whitespace-nowrap">${{ service.price }}</span>
+                                        {% endif %}
+                                    </div>
+                                    {% if service.description %}
+                                        <p class="text-charcoal-400 text-sm mt-2">{{ service.description }}</p>
+                                    {% endif %}
+                                    {% if service.duration_minutes %}
+                                        <p class="text-sage-500 text-xs mt-2 font-medium">{{ service.duration_minutes }} min</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center text-charcoal-400">Services coming soon.</p>
+        {% endfor %}
+    </div>
+</section>

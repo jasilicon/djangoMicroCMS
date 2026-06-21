@@ -1,0 +1,21 @@
+<footer class="bg-charcoal-500 text-cream/80 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+        {% if business.social_links.exists %}
+            <div class="flex justify-center gap-4 mb-8">
+                {% for link in business.social_links.all %}
+                    {% if link.is_published %}
+                        <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+                           class="w-10 h-10 bg-white/10 hover:bg-terracotta-500 rounded-full flex items-center justify-center transition">
+                            <span class="text-xs font-medium text-white">{{ link.get_platform_display|slice:":1" }}</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="text-center text-sm">
+            <p>&copy; {% now "Y" %} {{ business.name }}. All rights reserved.</p>
+            <p class="mt-2 text-cream/50">Powered by Micro-CMS</p>
+        </div>
+    </div>
+</footer>

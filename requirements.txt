@@ -1,0 +1,5 @@
+Django==5.2.15
+django-summernote==0.8.20.0
+django-tailwind-cli==4.6.2
+django-typer==3.7.3
+pillow==12.2.0

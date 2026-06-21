@@ -1,0 +1,49 @@
+{% extends "public/base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% if sections.hero %}
+    {% include "public/partials/hero.html" %}
+{% endif %}
+
+<nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-sm border-b border-charcoal-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        {% if business.logo %}
+            <img src="{{ business.logo.url }}" alt="{{ business.name }}" class="h-10 w-auto object-contain">
+        {% else %}
+            <span class="text-xl font-bold text-terracotta-500">{{ business.name }}</span>
+        {% endif %}
+        <div class="flex gap-6 text-sm font-medium text-charcoal-400">
+            {% if sections.about %}<a href="#about" class="hover:text-terracotta-500 transition">About</a>{% endif %}
+            {% if sections.services %}<a href="#services" class="hover:text-terracotta-500 transition">Services</a>{% endif %}
+            {% if sections.gallery %}<a href="#gallery" class="hover:text-terracotta-500 transition">Gallery</a>{% endif %}
+            {% if sections.hours %}<a href="#hours" class="hover:text-terracotta-500 transition">Hours</a>{% endif %}
+            {% if sections.contact %}<a href="#contact" class="hover:text-terracotta-500 transition">Contact</a>{% endif %}
+        </div>
+    </div>
+</nav>
+
+{% if sections.about %}
+    {% include "public/partials/about.html" %}
+{% endif %}
+
+{% if sections.services %}
+    {% include "public/partials/services.html" %}
+{% endif %}
+
+{% if sections.gallery %}
+    {% include "public/partials/gallery.html" %}
+{% endif %}
+
+{% if sections.hours %}
+    {% include "public/partials/hours.html" %}
+{% endif %}
+
+{% if sections.contact %}
+    {% include "public/partials/contact.html" %}
+{% endif %}
+
+{% include "public/partials/footer.html" %}
+
+{% endblock %}

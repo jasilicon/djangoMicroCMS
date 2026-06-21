@@ -1,0 +1,42 @@
+<section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-charcoal-800">
+    {% if hero_images %}
+        <div class="absolute inset-0">
+            {% for img in hero_images %}
+                <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 {% if forloop.first %}opacity-100{% else %}opacity-0{% endif %}"
+                     style="background-image: url('{{ img.image.url }}');"
+                     data-hero-slide>
+            {% endfor %}
+        </div>
+        <div class="absolute inset-0 bg-black/40"></div>
+    {% endif %}
+    <div class="relative z-10 text-center text-white px-4 max-w-4xl">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">{{ business.name }}</h1>
+        {% if business.tagline %}
+            <p class="text-xl md:text-2xl text-cream/90 mb-8 drop-shadow">{{ business.tagline }}</p>
+        {% endif %}
+        {% for img in hero_images %}
+            {% if img.cta_text %}
+                <a href="{{ img.cta_url|default:'#services' }}"
+                   class="inline-block bg-terracotta-500 hover:bg-terracotta-600 text-white font-semibold px-8 py-3 rounded-lg transition shadow-lg">
+                    {{ img.cta_text }}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+{% if hero_images|length > 1 %}
+<script>
+    (function() {
+        const slides = document.querySelectorAll('[data-hero-slide]');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('opacity-100');
+            slides[current].classList.add('opacity-0');
+            current = (current + 1) % slides.length;
+            slides[current].classList.remove('opacity-0');
+            slides[current].classList.add('opacity-100');
+        }, 5000);
+    })();
+</script>
+{% endif %}
