@@ -12,17 +12,18 @@
             theme: {
                 extend: {
                     colors: {
-                        terracotta: {
-                            50: '#faf0ec',
-                            100: '#f5e1d9',
-                            200: '#ebc3b3',
-                            300: '#e1a58d',
-                            400: '#d78767',
-                            500: '#c67b5c',
-                            600: '#a8624a',
-                            700: '#8a4f3b',
-                            800: '#6c3d2c',
-                            900: '#4e2c1d',
+                        wine: {
+                            50: '#fdf2f4',
+                            100: '#fce7ea',
+                            200: '#f9d0d8',
+                            300: '#f4a9b7',
+                            400: '#ed7a8f',
+                            500: '#e24d69',
+                            600: '#c92a4a',
+                            700: '#a91d39',
+                            800: '#651C32',
+                            900: '#57182b',
+                            950: '#310b17',
                         },
                         cream: '#FFF8F0',
                         charcoal: {
@@ -56,6 +57,9 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
+        @media (max-width: 768px) {
+            .utility-bar { display: none; }
+        }
     </style>
     {% block extra_head %}{% endblock %}
 </head>

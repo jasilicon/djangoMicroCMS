@@ -1,42 +1,54 @@
-<section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-charcoal-800">
+<section id="hero" class="relative h-[75vh] min-h-[500px] flex items-center justify-center overflow-hidden">
     {% if hero_images %}
         <div class="absolute inset-0">
             {% for img in hero_images %}
                 <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 {% if forloop.first %}opacity-100{% else %}opacity-0{% endif %}"
                      style="background-image: url('{{ img.image.url }}');"
-                     data-hero-slide>
+                     data-hero-slide></div>
             {% endfor %}
         </div>
-        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/70"></div>
+    {% else %}
+        <div class="absolute inset-0 bg-gradient-to-br from-wine-900 via-wine-800 to-charcoal-900"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.15\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
     {% endif %}
-    <div class="relative z-10 text-center text-white px-4 max-w-4xl">
-        <h1 class="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">{{ business.name }}</h1>
+
+    <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
         {% if business.tagline %}
-            <p class="text-xl md:text-2xl text-cream/90 mb-8 drop-shadow">{{ business.tagline }}</p>
+            <p class="text-lg md:text-xl font-medium text-cream/80 mb-3 tracking-widest uppercase">{{ business.tagline }}</p>
         {% endif %}
-        {% for img in hero_images %}
-            {% if img.cta_text %}
-                <a href="{{ img.cta_url|default:'#services' }}"
-                   class="inline-block bg-terracotta-500 hover:bg-terracotta-600 text-white font-semibold px-8 py-3 rounded-lg transition shadow-lg">
-                    {{ img.cta_text }}
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg leading-tight">{{ business.name }}</h1>
+        <div class="w-20 h-0.5 bg-wine-400 mx-auto mb-6 rounded-full"></div>
+        {% if business.about %}
+            <p class="text-lg md:text-xl text-cream/80 mb-10 max-w-2xl mx-auto drop-shadow leading-relaxed">{{ business.about|striptags|truncatewords:30 }}</p>
+        {% endif %}
+        <div class="flex flex-wrap justify-center gap-4">
+            {% if sections.services %}
+                <a href="#services" class="inline-block bg-wine-600 hover:bg-wine-700 text-white font-semibold px-8 py-3.5 rounded-lg transition shadow-lg shadow-black/20">
+                    View Our Menu
                 </a>
             {% endif %}
-        {% endfor %}
+            {% if sections.contact %}
+                <a href="#contact" class="inline-block bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-lg transition border border-white/30 backdrop-blur-sm">
+                    Book a Table
+                </a>
+            {% endif %}
+        </div>
     </div>
-</section>
 
-{% if hero_images|length > 1 %}
-<script>
-    (function() {
-        const slides = document.querySelectorAll('[data-hero-slide]');
-        let current = 0;
-        setInterval(() => {
-            slides[current].classList.remove('opacity-100');
-            slides[current].classList.add('opacity-0');
-            current = (current + 1) % slides.length;
-            slides[current].classList.remove('opacity-0');
-            slides[current].classList.add('opacity-100');
-        }, 5000);
-    })();
-</script>
-{% endif %}
+    {% if hero_images|length > 1 %}
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('[data-hero-slide]');
+            let current = 0;
+            setInterval(() => {
+                slides[current].classList.remove('opacity-100');
+                slides[current].classList.add('opacity-0');
+                current = (current + 1) % slides.length;
+                slides[current].classList.remove('opacity-0');
+                slides[current].classList.add('opacity-100');
+            }, 5000);
+        })();
+    </script>
+    {% endif %}
+</section>

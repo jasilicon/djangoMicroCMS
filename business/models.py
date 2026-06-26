@@ -43,7 +43,7 @@ class SectionPublish(models.Model):
     ]
     business = models.ForeignKey(Business, on_delete=models.CASCADE, related_name="section_publishes")
     section_slug = models.CharField(max_length=20, choices=SECTION_CHOICES)
-    is_published = models.BooleanField(default=True)
+    is_published = models.BooleanField(default=True, help_text="Toggling this off hides the section on the live homepage")
 
     class Meta:
         unique_together = ("business", "section_slug")
@@ -71,8 +71,8 @@ class HeroImage(models.Model):
 
 class SiteSetting(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE, related_name="settings", null=True, blank=True)
-    key = models.CharField(max_length=100)
-    value = models.TextField(blank=True)
+    key = models.CharField(max_length=100, help_text="Unique identifier for this setting")
+    value = models.TextField(blank=True, help_text="The value for this setting")
 
     class Meta:
         unique_together = ("business", "key")

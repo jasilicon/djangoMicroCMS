@@ -1,9 +1,9 @@
-from django.contrib.admin import AdminSite
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import GroupAdmin as BaseGroupAdmin
+from unfold.sites import UnfoldAdminSite
 
 
-class OwnerAdminSite(AdminSite):
+class OwnerAdminSite(UnfoldAdminSite):
     site_header = "Micro-CMS Administration"
     site_title = "Micro-CMS Admin"
     index_title = "Dashboard"

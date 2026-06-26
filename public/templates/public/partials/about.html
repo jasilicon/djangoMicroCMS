@@ -1,7 +1,11 @@
 <section id="about" class="py-20 px-4 bg-white">
     <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-charcoal-500 mb-4">About Us</h2>
-        <div class="w-16 h-1 bg-terracotta-500 mx-auto mb-8 rounded-full"></div>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-charcoal-500 mb-3">About Us</h2>
+        <div class="flex items-center justify-center gap-2 mb-8">
+            <span class="w-8 h-0.5 bg-wine-600 rounded-full"></span>
+            <span class="w-2 h-2 bg-wine-600 rounded-full"></span>
+            <span class="w-8 h-0.5 bg-wine-600 rounded-full"></span>
+        </div>
         <div class="prose prose-lg max-w-none text-charcoal-400 leading-relaxed">
             {{ business.about|safe }}
         </div>

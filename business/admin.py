@@ -30,7 +30,7 @@ class BusinessAdmin(SummernoteModelAdminMixin, admin.ModelAdmin):
         return qs.filter(owner=request.user)
 
     def get_fields(self, request, obj=None):
-        fields = ["name", "tagline", "about", "address", "phone", "email", "google_maps_embed_url", "logo", "favicon"]
+        fields = ["name", "slug", "tagline", "about", "address", "phone", "email", "google_maps_embed_url", "logo", "favicon"]
         if request.user.is_superuser:
             fields.append("is_published")
         return fields

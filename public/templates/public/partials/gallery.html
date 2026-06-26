@@ -1,7 +1,11 @@
 <section id="gallery" class="py-20 px-4 bg-white">
     <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-charcoal-500 mb-4">Gallery</h2>
-        <div class="w-16 h-1 bg-terracotta-500 mx-auto mb-12 rounded-full"></div>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-charcoal-500 mb-3">Gallery</h2>
+        <div class="flex items-center justify-center gap-2 mb-12">
+            <span class="w-8 h-0.5 bg-wine-600 rounded-full"></span>
+            <span class="w-2 h-2 bg-wine-600 rounded-full"></span>
+            <span class="w-8 h-0.5 bg-wine-600 rounded-full"></span>
+        </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {% for image in gallery %}
@@ -11,13 +15,11 @@
                          alt="{{ image.caption }}"
                          class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     {% if image.caption %}
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-end p-4">
-                            <p class="text-white text-sm opacity-0 group-hover:opacity-100 transition translate-y-2 group-hover:translate-y-0">{{ image.caption }}</p>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                            <p class="text-white text-sm">{{ image.caption }}</p>
                         </div>
                     {% endif %}
                 </a>
-            {% empty %}
-                <p class="col-span-full text-center text-charcoal-400">Gallery coming soon.</p>
             {% endfor %}
         </div>
     </div>

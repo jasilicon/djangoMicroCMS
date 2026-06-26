@@ -9,6 +9,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -25,6 +26,13 @@ INSTALLED_APPS = [
     'social',
     'public',
 ]
+
+UNFOLD = {
+    "SITE_TITLE": "Micro-CMS",
+    "SITE_HEADER": "Micro-CMS Administration",
+    "SITE_URL": "/",
+    "SHOW_HISTORY": True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

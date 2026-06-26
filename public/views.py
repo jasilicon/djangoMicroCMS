@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
 from business.models import Business
 
 
@@ -29,4 +30,5 @@ def home(request, slug=None):
         "service_categories": service_categories,
         "hours": hours,
         "social_links": social_links,
+        "today": timezone.localtime(timezone.now()).weekday(),
     })
